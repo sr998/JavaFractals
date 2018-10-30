@@ -4,7 +4,7 @@ import java.awt.geom.Path2D;
 
 public class SierpinskiTriangle extends SierpinskiMain
 {
-    void drawTriangle(Graphics2D g, int x, int y, int size,int n)
+    void drawTriangle(Graphics2D g, int x, int y, int size)
     {
         if (size <= limit)
         {
@@ -15,15 +15,13 @@ public class SierpinskiTriangle extends SierpinskiMain
 
             g.fill(p);
 
-            ++n;
-            System.out.println("N = "+n);
+
         } else {
             size /= 2;
-            drawTriangle(g, x, y, size,n);
-            drawTriangle(g, x + size /2,y + size, size,n);
-            drawTriangle(g, x - size /2,y + size, size,n);
-            ++n;
-            System.out.println("N = "+n);
+            drawTriangle(g, x, y, size);
+            drawTriangle(g, x + size /2,y + size, size);
+            drawTriangle(g, x - size /2,y + size, size);
+
         }
     }
 
@@ -35,6 +33,6 @@ public class SierpinskiTriangle extends SierpinskiMain
         Graphics2D g = (Graphics2D) gg;
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.translate(margin, margin);
-        drawTriangle(g, dimension / 2, 0, dimension,n);
+        drawTriangle(g, dimension / 2, 0, dimension);
     }
 }
